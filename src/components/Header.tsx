@@ -1,20 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { List, X } from "phosphor-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full bg-brand-navy z-50 shadow-lg backdrop-blur-sm border-b border-white/10">
+    <header className={`fixed top-0 w-full z-50 backdrop-blur-sm border-b border-white/10 transition-all duration-500 ${
+      isScrolled ? 'bg-brand-navy shadow-lg' : 'bg-transparent'
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24 animate-in fade-in duration-700"> {/* Altura aumentada para h-24 */}
+        <div className="flex items-center justify-between h-20 animate-in fade-in duration-700"> {/* Altura reduzida para h-20 */}
           {/* Logo */}
           <a href="#" className="flex items-center space-x-2 group">
             <img 
               src="/logo_header.png" 
               alt="Conciarge" 
-              className="h-20 w-auto transition-all duration-500 group-hover:scale-105" // Altura do logo aumentada para h-20
+              className="h-16 w-auto transition-all duration-500 group-hover:scale-105" // Altura do logo reduzida para h-16
             />
           </a>
 
