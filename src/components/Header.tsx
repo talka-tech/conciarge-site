@@ -16,7 +16,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 backdrop-blur-sm border-b border-white/10 transition-all duration-500 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled ? 'bg-brand-navy shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
@@ -46,6 +46,10 @@ const Header = () => {
             </a>
             <a href="#faq" className="text-white/90 hover:text-white transition-all duration-300 font-medium relative group">
               FAQ
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="https://conciarge-parceiros.vercel.app" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-all duration-300 font-medium relative group">
+              Seja um Parceiro
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </a>
           </nav>
@@ -104,6 +108,15 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 FAQ
+              </a>
+              <a 
+                href="https://conciarge-parceiros.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white/90 hover:text-white transition-all duration-300 hover:translate-x-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Seja um Parceiro
               </a>
               <Button variant="outline" className="w-fit bg-white text-primary hover:bg-white/90 hover:text-primary mt-2 border-white transition-all duration-300 hover:scale-105">
                 Demonstração Gratuita
